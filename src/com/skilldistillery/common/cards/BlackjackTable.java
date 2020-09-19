@@ -34,6 +34,7 @@ public class BlackjackTable {
 				playerOneTurn = player1.takeTurn(input, deck1);
 			}
 			dealer.takeTurn(deck1);
+			System.out.println("Dealer's Total is " + dealer.hand.getHandValue());
 		
 		
 		

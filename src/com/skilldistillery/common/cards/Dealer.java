@@ -9,14 +9,27 @@ public class Dealer extends Player{
 		hand = new BlackjackHand();
 	}
 	
-	public boolean takeTurn(Deck deck) {
+	public void takeTurn(Deck deck) {
+		
 		boolean notDone = true;
 		System.out.println("\nDealer flips his other card...");
-		System.out.println("\nDealer is showing:\n -------------- \n" + hand.cardList.get(0) + "\n" + hand.cardList.get(1));
-		System.out.println("Dealer's total is " + hand.getHandValue());
-		
-		return notDone;
+		System.out.println("\n\nDealer is showing:\n -------------- \n" + hand.toString());
+	    do {
+		if (hand.getHandValue() > 17) {
+			notDone = false;
+		}
+		if (hand.getHandValue() < 17) {
+			while (hand.getHandValue() < 17) {
+				System.out.println("Dealer draws a card...");
+				hand.addCard(deck.dealCard());
+				System.out.println("\n\nDealer is showing:\n -------------- \n" + hand.toString());
+				notDone = true;
+			}
+			
+		}
+	    } while (notDone == true);
 	}
 
+	
 
 }
