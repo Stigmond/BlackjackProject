@@ -8,6 +8,7 @@ public class BlackjackTable {
 	private Dealer dealer;
 	private Deck deck1;
 	private Scanner input;
+
 	BlackjackTable() {
 
 		player1 = new Player();
@@ -17,35 +18,61 @@ public class BlackjackTable {
 	}
 
 	public void playBlackjack() {
+
+		boolean playAgain = false;
 		
-		dealer.hand.newHand();
-		player1.hand.newHand();
-		boolean playerOneTurn = true;
-		boolean DealerTurn = false;
-		dealHands();
-		while (playerOneTurn) {
-			showHands();
-			playerOneTurn = player1.takeTurn(input, deck1);
-			System.out.println(playerOneTurn);
-		} 
+		do {
+		
+			
+			
+			
+			dealHands();
+			boolean playerOneTurn = true;
+			boolean dealerTurn = false;
+			while (playerOneTurn) {
+				showHands();
+				playerOneTurn = player1.takeTurn(input, deck1);
+			}
+			dealer.takeTurn(deck1);
+		
+		
+		
+		} while (playAgain);
+		
+		
+		
+		
+		
+		
+		input.close();
 	}
-	
+
 	public void showHands() {
 		System.out.println("\nDealer is showing:\n -------------- \n" + dealer.hand.cardList.get(0));
 		System.out.println("\n\nPlayer is showing:\n -------------- \n" + player1.hand.toString());
 	}
-	
+
 	public void dealHands() {
-		
-		System.out.print("The deck is shuffled...");
+
+		dealer.hand.newHand();
+		player1.hand.newHand();
+		System.out.println("The deck is shuffled...");
 		deck1.shuffleDeck();
-		System.out.println("Dealer draws their first card...");
+		System.out.println("Dealer draws their first card face up...");
 		dealer.hand.addCard(deck1.dealCard());
-		System.out.println("Player is dealt their first card...");
+		System.out.println("Player is dealt their first card face up...");
 		player1.hand.addCard(deck1.dealCard());
 		System.out.println("Dealer draws their second card face down...");
-		System.out.println("Player is dealt their second card...");
+		dealer.hand.addCard(deck1.dealCard());
+		System.out.println("Player is dealt their second card face up...");
 		player1.hand.addCard(deck1.dealCard());
-		
 	}
+
+//	public void checkForBlackjack() {
+//		if (((BlackjackHand)player1.hand).isBlackjack() && ((BlackjackHand)dealer.hand).isBlackjack()){
+//		
+//		}
+
+//}
+
 }
