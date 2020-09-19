@@ -5,30 +5,28 @@ import java.util.List;
 
 public abstract class Hand {
 
-	protected List<Card> cardsInHand;
+	protected List<Card> cardList;
 	
 	public Hand() {
 		
-		cardsInHand = new ArrayList<>();
+		cardList = new ArrayList<>();
 	}
 	
 	public void addCard(Card card) {
 		
-		cardsInHand.add(card);
+		cardList.add(card);
+	}	
+	
+	public void newHand() {
+		
+		cardList = new ArrayList<>();
 	}
 	
-	public void clear() {
-		
-		cardsInHand = new ArrayList<>();
-	}
-	
-	public void getHandValue(int cardsInHand) {
-		
-	}
+	public abstract int getHandValue();
 
 	@Override
 	public String toString() {
-		return "Hand [cardsInHand=" + cardsInHand + "]";
+		return "Hand [cardsInHand=" + cardList + "]";
 	}
 	
 	
