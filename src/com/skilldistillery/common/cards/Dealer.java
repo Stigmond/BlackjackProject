@@ -20,7 +20,7 @@ public class Dealer {
 		}
 		if (hand.getHandValue() < 17) {
 			while (hand.getHandValue() < 17) {
-				System.out.println("Dealer draws a card from the deck...");
+				System.out.println("Dealer draws a card from the shoe...");
 				hand.addCard(deck.dealCard());
 				System.out.println("\n\nDealer is now showing:\n-------------- \n" + hand.toString());
 				notDone = true;

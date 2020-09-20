@@ -8,26 +8,33 @@ public class BlackjackTable {
 	private Dealer dealer;
 	private Deck deck1;
 	private Scanner input;
-
-	BlackjackTable() {
-
+    private int shoeSize;
+    
+	public BlackjackTable(int shoeSize) {
+		this.shoeSize = shoeSize;
 		player1 = new Player();
 		dealer = new Dealer();
-		deck1 = new Deck();
+		deck1 = new BlackjackDeck(this.shoeSize);
+		deck1.shuffleDeck();
+		deck1.shuffleDeck();
 		deck1.shuffleDeck();
 		input = new Scanner(System.in);
 	}
-
+	
 	public void playBlackjack() {
 
-		System.out.println("Welcome to Nero's Palace! Please take a seat!\n");
+		System.out.println("\n\nWelcome to Nero's Palace! Please take a seat!\n");
+		
+		int shuffleSize = (int)(deck1.checkDeckSize() * .40);
 		boolean keepPlaying = false;
 
 		do {
-			if (deck1.checkDeckSize() < 20) {
-				System.out.println("\nThe deck is getting small, so it is reloaded...");
-				deck1 = new Deck();
-				System.out.println("\nThe deck is shuffled...");
+			if (deck1.checkDeckSize() <= shuffleSize) {
+				System.out.println("\nThe shoe is getting small, so it is reloaded...");
+				deck1 = new BlackjackDeck(this.shoeSize);
+				System.out.println("\nThe cards are shuffled...");
+				deck1.shuffleDeck();
+				deck1.shuffleDeck();
 				deck1.shuffleDeck();
 			}
 
@@ -54,13 +61,13 @@ public class BlackjackTable {
 
 		dealer.hand.newHand();
 		player1.hand.newHand();
-		System.out.println("\nDealer draws their first card face up from the deck...");
+		System.out.println("\nDealer draws their first card face up from the shoe...");
 		dealer.hand.addCard(deck1.dealCard());
-		System.out.println("Player is dealt their first card face up from the deck...");
+		System.out.println("Player is dealt their first card face up from the shoe...");
 		player1.hand.addCard(deck1.dealCard());
-		System.out.println("Dealer draws their second card face down from the deck...");
+		System.out.println("Dealer draws their second card face down from the shoe...");
 		dealer.hand.addCard(deck1.dealCard());
-		System.out.println("Player is dealt their second card face up from the deck...");
+		System.out.println("Player is dealt their second card face up from the shoe...");
 		player1.hand.addCard(deck1.dealCard());
 	}
 
@@ -112,7 +119,7 @@ public class BlackjackTable {
 
 		} else if (dealer.hand.getHandValue() > 21) {
 			System.out.println("\nDealer Busts! Player Wins!");
-		} else if (dealer.hand.getHandValue() < 21) {
+		} else if (dealer.hand.getHandValue() <= 21) {
 			if (player1.hand.getHandValue() > dealer.hand.getHandValue()) {
 				System.out.println("\nCongratulations! Player Wins!");
 			} else if (player1.hand.getHandValue() < dealer.hand.getHandValue()) {
@@ -137,7 +144,7 @@ public class BlackjackTable {
 				break;
 			case "n":
 			case "no":
-				System.out.println("Goodbye! Thanks for playing!");
+				System.out.println("\nGoodbye! Thanks for playing!");
 				keepPlaying = false;
 				rightAnswer = true;
 				break;

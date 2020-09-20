@@ -25,7 +25,7 @@ public class Player {
 			switch (playerChoice.toLowerCase()) {
 			case "h":
 			case "hit":
-				System.out.println("Player hits.");
+				System.out.println("\nPlayer hits.");
 				hand.addCard(deck.dealCard());
 				notDone = true;
 				break;
