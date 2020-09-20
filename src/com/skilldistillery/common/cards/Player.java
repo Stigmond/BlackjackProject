@@ -20,7 +20,7 @@ public class Player {
 			return notDone;
 		} else {
 
-			System.out.print("Would Player like to (H)it or (S)tay? ");
+			System.out.print("\nWould Player like to (H)it or (S)tay? ");
 			String playerChoice = input.next();
 			switch (playerChoice.toLowerCase()) {
 			case "h":

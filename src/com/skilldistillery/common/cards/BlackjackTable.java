@@ -19,6 +19,7 @@ public class BlackjackTable {
 
 	public void playBlackjack() {
 
+		System.out.println("Welcome to Nero's Palace! Please take a seat!\n");
 		boolean keepPlaying = false;
 
 		do {
@@ -59,6 +60,7 @@ public class BlackjackTable {
 		dealer.hand.addCard(deck1.dealCard());
 		System.out.println("Player is dealt their second card face up from the deck...");
 		player1.hand.addCard(deck1.dealCard());
+		System.out.println("");
 	}
 
 	public boolean checkForBlackjack() {
@@ -109,15 +111,15 @@ public class BlackjackTable {
 		
 		}
 		else if (dealer.hand.getHandValue() > 21) {
-			System.out.println("Dealer Busts! Player Wins!");
+			System.out.println("\nDealer Busts! Player Wins!");
 		}
 		else if (dealer.hand.getHandValue() < 21) {
 			if (player1.hand.getHandValue() > dealer.hand.getHandValue()) {
-				System.out.println("Congratulations! Player Wins!");
+				System.out.println("\nCongratulations! Player Wins!");
 			} else if (player1.hand.getHandValue() < dealer.hand.getHandValue()) {
-				System.out.println("Sorry, Dealer Wins...");
+				System.out.println("\nSorry, Dealer Wins...");
 			} else {
-				System.out.println("It's a Push!");
+				System.out.println("\nIt's a Push!");
 			}
 		}
 	}
