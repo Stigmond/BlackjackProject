@@ -1,6 +1,6 @@
 package com.skilldistillery.common.cards;
 
-public class Dealer extends Player{
+public class Dealer {
 
 	Hand hand;
 	
