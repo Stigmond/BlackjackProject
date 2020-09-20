@@ -19,38 +19,31 @@ public class BlackjackTable {
 
 	public void playBlackjack() {
 
-		boolean playAgain = false;
-		
+		boolean keepPlaying = false;
+
 		do {
-		
-			
-			
-			
+
+			System.out.println("The deck is reloaded...");
+			deck1 = new Deck();
 			dealHands();
-			boolean playerOneTurn = true;
-			boolean dealerTurn = false;
-			while (playerOneTurn) {
-				showHands();
-				playerOneTurn = player1.takeTurn(input, deck1);
+			if (checkForBlackjack()) {
+				keepPlaying = playAgain(input);
+			} else {
+				playHands();
 			}
-			dealer.takeTurn(deck1);
-			System.out.println("Dealer's Total is " + dealer.hand.getHandValue());
-		
-		
-		
-		} while (playAgain);
-		
-		
-		
-		
-		
-		
+
+			
+			
+			keepPlaying = playAgain(input);
+
+		} while (keepPlaying);
+
 		input.close();
 	}
 
 	public void showHands() {
-		System.out.println("\nDealer is showing:\n -------------- \n" + dealer.hand.cardList.get(0));
-		System.out.println("\n\nPlayer is showing:\n -------------- \n" + player1.hand.toString());
+		System.out.println("\nDealer is showing:\n-------------- \n" + dealer.hand.cardList.get(0));
+		System.out.println("\n\nPlayer is showing:\n-------------- \n" + player1.hand.toString());
 	}
 
 	public void dealHands() {
@@ -59,21 +52,78 @@ public class BlackjackTable {
 		player1.hand.newHand();
 		System.out.println("The deck is shuffled...");
 		deck1.shuffleDeck();
-		System.out.println("Dealer draws their first card face up...");
+		System.out.println("Dealer draws their first card face up from the deck...");
 		dealer.hand.addCard(deck1.dealCard());
-		System.out.println("Player is dealt their first card face up...");
+		System.out.println("Player is dealt their first card face up from the deck...");
 		player1.hand.addCard(deck1.dealCard());
-		System.out.println("Dealer draws their second card face down...");
+		System.out.println("Dealer draws their second card face down from the deck...");
 		dealer.hand.addCard(deck1.dealCard());
-		System.out.println("Player is dealt their second card face up...");
+		System.out.println("Player is dealt their second card face up from the deck...");
 		player1.hand.addCard(deck1.dealCard());
 	}
 
-//	public void checkForBlackjack() {
-//		if (((BlackjackHand)player1.hand).isBlackjack() && ((BlackjackHand)dealer.hand).isBlackjack()){
-//		
-//		}
+	public boolean checkForBlackjack() {
 
-//}
+		player1.hand.getHandValue();
+		dealer.hand.getHandValue();
+
+		if (((BlackjackHand) player1.hand).isBlackjack() && ((BlackjackHand) dealer.hand).isBlackjack()) {
+			System.out.println("Dealer flips their other card...");
+			System.out.println("\nDealer is showing:\n-------------- \n" + dealer.hand.toString());
+			System.out.println("\n\nPlayer is showing:\n-------------- \n" + player1.hand.toString());
+			System.out.println("Both players have Blackjack! It's a draw!");
+			return true;
+		} else if (((BlackjackHand) player1.hand).isBlackjack()) {
+			System.out.println("Dealer flips their other card...");
+			System.out.println("\nDealer is showing:\n-------------- \n" + dealer.hand.toString());
+			System.out.println("\n\nPlayer is showing:\n-------------- \n" + player1.hand.toString());
+			System.out.println("Player has Blackjack!  Player wins!");
+			return true;
+		} else if (((BlackjackHand) dealer.hand).isBlackjack()) {
+			System.out.println("Dealer flips their other card...");
+			System.out.println("\nDealer is showing:\n-------------- \n" + dealer.hand.toString());
+			System.out.println("\n\nPlayer is showing:\n-------------- \n" + player1.hand.toString());
+			System.out.println("Dealer has Blackjack!  Dealer wins!");
+			return true;
+		}
+		return false;
+	}
+
+	public void playHands() {
+
+		boolean playerOneTurn = true;
+	
+		while (playerOneTurn) {
+			showHands();
+			playerOneTurn = player1.takeTurn(input, deck1);
+		}
+
+		if (player1.hand.getHandValue() <= 21) {
+			dealer.takeTurn(deck1);
+			System.out.println("Dealer's Total is " + dealer.hand.getHandValue());
+		}
+
+	}
+
+	public boolean playAgain(Scanner input) {
+		boolean keepPlaying = true;
+		System.out.println("\nWould you like to play again (Y/N)? ");
+		String playAgain = input.next();
+		switch (playAgain.toLowerCase()) {
+		case "y":
+		case "yes":
+			keepPlaying = true;
+			break;
+		case "n":
+		case "no":
+			System.out.println("Thanks for playing!");
+			keepPlaying = false;
+			break;
+		default:
+			System.out.println("Please enter (Y)es or (N)o.");
+			break;
+		}
+		return keepPlaying;
+	}
 
 }

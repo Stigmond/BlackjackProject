@@ -14,6 +14,8 @@ public class BlackjackApp {
 		BlackjackTable table1 = new BlackjackTable();
 		table1.playBlackjack();
 		
+		
+		
 		//Temporary code to test proper instantiation and calling of methods.
 		
 //		Deck deck1 = new Deck();
