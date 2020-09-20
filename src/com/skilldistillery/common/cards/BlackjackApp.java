@@ -17,7 +17,7 @@ public class BlackjackApp {
 		int shoeSize = 1;
 
 		do {
-			System.out.print("How many decks of cards would you like in your shoe? (1-3)");
+			System.out.print("How many decks of cards would you like in your shoe (1-3)? ");
 			try {
 				shoeSize = kb.nextInt();
 				if (shoeSize < 1 || shoeSize > 3) {
