@@ -27,13 +27,12 @@ public class BlackjackTable {
 			deck1 = new Deck();
 			dealHands();
 			if (checkForBlackjack()) {
-				keepPlaying = playAgain(input);
+
 			} else {
 				playHands();
+				findWinner();
 			}
 
-			
-			
 			keepPlaying = playAgain(input);
 
 		} while (keepPlaying);
@@ -92,7 +91,7 @@ public class BlackjackTable {
 	public void playHands() {
 
 		boolean playerOneTurn = true;
-	
+
 		while (playerOneTurn) {
 			showHands();
 			playerOneTurn = player1.takeTurn(input, deck1);
@@ -103,6 +102,24 @@ public class BlackjackTable {
 			System.out.println("Dealer's Total is " + dealer.hand.getHandValue());
 		}
 
+	}
+
+	public void findWinner() {
+		if (player1.hand.getHandValue() > 21) {
+		
+		}
+		else if (dealer.hand.getHandValue() > 21) {
+			System.out.println("Dealer Busts! Player Wins!");
+		}
+		else if (dealer.hand.getHandValue() < 21) {
+			if (player1.hand.getHandValue() > dealer.hand.getHandValue()) {
+				System.out.println("Congratulations! Player Wins!");
+			} else if (player1.hand.getHandValue() < dealer.hand.getHandValue()) {
+				System.out.println("Sorry, Dealer Wins...");
+			} else {
+				System.out.println("It's a Push!");
+			}
+		}
 	}
 
 	public boolean playAgain(Scanner input) {
