@@ -33,9 +33,8 @@ public class BlackjackTable {
 				playHands();
 				findWinner();
 			}
-
 			keepPlaying = playAgain(input);
-
+			
 		} while (keepPlaying);
 
 		input.close();
@@ -125,23 +124,28 @@ public class BlackjackTable {
 	}
 
 	public boolean playAgain(Scanner input) {
-		boolean keepPlaying = true;
-		System.out.println("\nWould you like to play again (Y/N)? ");
-		String playAgain = input.next();
-		switch (playAgain.toLowerCase()) {
-		case "y":
-		case "yes":
-			keepPlaying = true;
-			break;
-		case "n":
-		case "no":
-			System.out.println("Thanks for playing!");
-			keepPlaying = false;
-			break;
-		default:
-			System.out.println("Please enter (Y)es or (N)o.");
-			break;
-		}
+		boolean keepPlaying = false;
+		boolean rightAnswer = false;
+		do {
+			System.out.print("\nWould you like to play again (Y/N)? ");
+			String playAgain = input.next();
+			switch (playAgain.toLowerCase()) {
+			case "y":
+			case "yes":
+				keepPlaying = true;
+				rightAnswer = true;
+				break;
+			case "n":
+			case "no":
+				System.out.println("Goodbye! Thanks for playing!");
+				keepPlaying = false;
+				rightAnswer = true;
+				break;
+			default:
+				System.out.println("Please enter (Y)es or (N)o.");
+				break;
+			}
+		} while (!rightAnswer);
 		return keepPlaying;
 	}
 
