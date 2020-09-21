@@ -39,5 +39,8 @@ public class BlackjackApp {
 		table1.playBlackjack();
 		kb.close();
 
+	
+		
+		
 	}
 }

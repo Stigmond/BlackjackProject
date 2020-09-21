@@ -56,7 +56,6 @@ public class BlackjackTable {
 	}
 
 	public void dealHands() {
-
 		dealer.hand.newHand();
 		player1.hand.newHand();
 		System.out.println("\nDealer draws their first card face up from the shoe...");

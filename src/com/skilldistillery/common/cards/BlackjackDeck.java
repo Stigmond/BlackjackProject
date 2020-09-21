@@ -11,17 +11,9 @@ public class BlackjackDeck extends Deck {
 	public BlackjackDeck(int sizeOfShoe) {
 
 		for (int i = 0; i < sizeOfShoe; i++) {
-			playingCardsDeck = new ArrayList<>(52);
-			for (Suit suit : Suit.values()) {
-				for (Rank rank : Rank.values()) {
-					playingCardsDeck.add(new Card(suit, rank));
-					
-				}
-				
-			}
 			shoe.addAll(playingCardsDeck);
 		}
-
+		
 	}
 	
 	@Override
