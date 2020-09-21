@@ -22,7 +22,7 @@ This is the Week 4 assignment for the Skill Distillery Java Bootcamp.  This assi
 
 ### Topics
 
-Instead of any new topics, this project is a culmination of all topics previously listed in the first three projects. However, more emphasis was placed on:
+Instead of any new topics, this Project is a culmination of all topics previously listed in the first three Projects. However, more emphasis was placed on:
 
 * UML Design
 * extending
