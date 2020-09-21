@@ -22,8 +22,6 @@ public class BlackjackTable {
 	}
 	
 	public void playBlackjack() {
-
-		System.out.println("\n\nWelcome to Nero's Palace! Please take a seat!\n");
 		
 		int shuffleSize = (int)(deck1.checkDeckSize() * .40);
 		boolean keepPlaying = false;

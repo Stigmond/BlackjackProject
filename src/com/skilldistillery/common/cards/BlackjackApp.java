@@ -15,7 +15,8 @@ public class BlackjackApp {
 		Scanner kb = new Scanner(System.in);
 		boolean invalidEntry = true;
 		int shoeSize = 1;
-
+		System.out.println("Welcome to Nero's Palace! Please take a seat at the Blackjack table!\n");
+		
 		do {
 			System.out.print("How many decks of cards would you like in your shoe (1-3)? ");
 			try {
