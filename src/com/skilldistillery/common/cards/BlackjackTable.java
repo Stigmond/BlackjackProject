@@ -112,9 +112,9 @@ public class BlackjackTable {
 	}
 
 	public void findWinner() {
-		if (player1.hand.getHandValue() > 21) {
+		if (((BlackjackHand) player1.hand).isBust()) {
 
-		} else if (dealer.hand.getHandValue() > 21) {
+		} else if (((BlackjackHand) dealer.hand).isBust()) {
 			System.out.println("\nDealer Busts! Player Wins!");
 		} else if (dealer.hand.getHandValue() <= 21) {
 			if (player1.hand.getHandValue() > dealer.hand.getHandValue()) {

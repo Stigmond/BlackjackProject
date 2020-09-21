@@ -14,7 +14,7 @@ public class Player {
 	public boolean takeTurn(Scanner input, Deck deck) {
 		boolean notDone = true;
 		System.out.println("\nPlayer's total is " + hand.getHandValue());
-		if (hand.getHandValue() > 21) {
+		if (((BlackjackHand) hand).isBust() ){
 			System.out.println("Player Busts! Game Over.");
 			notDone = false;
 			return notDone;
