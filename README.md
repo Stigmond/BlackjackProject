@@ -14,7 +14,7 @@ This is the Week 4 assignment for the Skill Distillery Java Bootcamp.  This assi
 
 4.  After selecting the shoe, the game will begin immediately.  The rules of the game follow general BlackJack rules, allowing for User to review their hand versus the partially-revealed hand of the Dealer, and reacting accordingly.  User may choose to Hit or Stay, with the former being offered repeatedly until User stays or busts.  Dealer will then take a turn, and the results of the game will be announced upon Dealer's completion.
 
-* Please note that per project instructions, Aces were only to be assigned either a value of 1 or a value of 10.  I chose a valuie of 1.  If I have the opportunity, I may refactor this code to account for both 1 and 10...
+  * Please note that per project instructions, Aces were only to be assigned either a value of 1 or a value of 10.  I chose a valuie of 1.  If I have the opportunity, I may refactor this code to account for both 1 and 10...
 
 5. Once a winner has been declared, User will be given an option to play again.  If User chooses "Yes", play begins again from the same shoe.  If User chooses "No", the program will cease.
 
